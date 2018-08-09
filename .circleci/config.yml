@@ -1,0 +1,33 @@
+version: '2'
+
+jobs:
+  build:
+    docker:
+      - image: circleci/clojure:lein-2.8.1
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          key: v1-inspect-{{ arch }}-{{ checksum "project.clj" }}
+
+      - run:
+          name: Install dependencies
+          command: lein deps
+
+      - save_cache:
+          key: v1-inspect-{{ arch }}-{{ checksum "project.clj" }}
+          paths:
+            - ~/.m2
+
+      - run:
+          name: Build Jar
+          command: lein jar
+
+      - deploy:
+          name: Publish to repos
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+                lein deploy private
+            fi
+
