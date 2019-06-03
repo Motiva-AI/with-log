@@ -1,5 +1,5 @@
-(defproject motiva/with-log "0.1.2"
-  :description "FIXME: write description"
+(defproject motiva/with-log "0.2.0"
+  :description "Log macro for capturing errors and timings"
   :url "http://example.com/FIXME"
   :license {:name "MIT License"
             :url "https://opensource.org/licenses/MIT"}
