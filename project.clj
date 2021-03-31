@@ -4,11 +4,11 @@
   :license {:name "MIT License"
             :url "https://opensource.org/licenses/MIT"}
 
-  :profiles {:dev {:dependencies [[org.clojure/clojure "1.10.0"]]
+  :profiles {:dev {:dependencies [[org.clojure/clojure "1.10.3"]]
 
                    :plugins [[s3-wagon-private "1.3.1"]]}
 
-             :provided {:dependencies [[org.clojure/tools.logging "0.4.1"]]}}
+             :provided {:dependencies [[org.clojure/tools.logging "1.1.0"]]}}
 
   ;; Use the chained credential provider - env credentials or a profile (set
   ;; AWS_PROFILE)
