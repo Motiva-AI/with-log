@@ -1,19 +1,13 @@
 (ns with-log.core
-  (:require [clojure.tools.logging]
-            [com.unbounce.dogstatsd.core :as statsd]))
+  (:require [clojure.tools.logging]))
 
 (defmacro with-log [message-or-config & body]
   (if (map? message-or-config)
     ;; Allow passing of some metric info
-    (let [{:keys [message metric-name tags]
-           :or   {tags #{}}}
+    (let [{:keys [message]}
           message-or-config]
-      (if (some? metric-name)
-        `(statsd/time! [~metric-name {:tags ~tags}]
-           (with-log ~message
-             ~@body))
-        `(with-log ~message
-           ~@body)))
+      `(with-log ~message
+         ~@body))
 
     `(try
        (clojure.tools.logging/infof "BEGIN: %s" ~message-or-config)
@@ -27,3 +21,4 @@
            (clojure.tools.logging/warnf tw# "FAILED: %s. %s" ~message-or-config ex-data#))
          ;; Rethrow for recovery
          (throw tw#)))))
+
