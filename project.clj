@@ -1,4 +1,4 @@
-(defproject motiva/with-log "0.3.0-SNAPSHOT"
+(defproject motiva/with-log "0.3.0"
   :description "Log macro for capturing errors and timings"
   :url "https://github.com/Motiva-AI/with-log"
   :license {:name "MIT License"
