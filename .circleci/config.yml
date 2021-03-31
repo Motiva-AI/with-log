@@ -3,7 +3,7 @@ version: '2'
 jobs:
   build:
     docker:
-      - image: circleci/clojure:lein-2.8.1
+      - image: circleci/clojure:openjdk-11-lein
 
     steps:
       - checkout
