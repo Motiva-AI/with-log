@@ -1,12 +1,11 @@
-(defproject motiva/with-log "0.2.1"
+(defproject motiva/with-log "0.3.0-SNAPSHOT"
   :description "Log macro for capturing errors and timings"
   :url "http://example.com/FIXME"
   :license {:name "MIT License"
             :url "https://opensource.org/licenses/MIT"}
 
   :dependencies [[org.clojure/clojure "1.10.0"]
-                 [org.clojure/tools.logging "0.4.1"]
-                 [com.unbounce/clojure-dogstatsd-client "0.5.0"]]
+                 [org.clojure/tools.logging "0.4.1"]]
 
   :profiles {:dev {:plugins [[s3-wagon-private "1.3.1"]]}}
 
