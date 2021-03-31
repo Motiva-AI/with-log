@@ -28,6 +28,6 @@ jobs:
           name: Publish to repos
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-                lein deploy private
+                lein deploy releases
             fi
 

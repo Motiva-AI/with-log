@@ -6,13 +6,12 @@
 
   :profiles {:dev {:dependencies [[org.clojure/clojure "1.10.3"]]
 
-                   :plugins [[s3-wagon-private "1.3.1"]]}
+                   :plugins []}
 
              :provided {:dependencies [[org.clojure/tools.logging "1.1.0"]]}}
 
-  ;; Use the chained credential provider - env credentials or a profile (set
-  ;; AWS_PROFILE)
-  ;; https://github.com/s3-wagon-private/s3-wagon-private#aws-credential-providers
-  :repositories {"private" {:url "s3p://maven-private-repo/releases/"
-                            :no-auth true
-                            :sign-releases false}})
+  :repositories {"releases" {:url           "https://clojars.org/repo"
+                             :username      "motiva-ai"
+                             :password      :env
+                             :sign-releases false}})
+
