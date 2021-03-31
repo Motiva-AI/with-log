@@ -10,7 +10,7 @@
         (is (= :foo (with-log msg :foo)))
 
         (is (log.test/logged? 'with-log.core-test :info (str "BEGIN: " msg)))
-        (is (log.test/logged? 'with-log.core-test :info (str "END: " msg)))))
+        (is (log.test/logged? 'with-log.core-test :info (re-pattern (str "END \\(elapsed time \\[\\d+\\] msecs\\): " msg))))))
 
     (testing "failed path"
       (let [fail-message "testing fail case"
@@ -22,5 +22,5 @@
                 (with-log msg ((fn [] (throw e))))))
 
           (is (log.test/logged? 'with-log.core-test :info (str "BEGIN: " msg)))
-          (is (log.test/logged? 'with-log.core-test :warn e (re-pattern (str "FAILED: " msg)))))))))
+          (is (log.test/logged? 'with-log.core-test :warn e (re-pattern (str "FAILED \\(elapsed time \\[\\d+\\] msecs\\): " msg)))))))))
 
